@@ -14,7 +14,7 @@ public class EnemyCompletedIsTrigger : MonoBehaviour
     }
     private void DeathSequence(){
         enabled = false;
-        Invoke(nameof(OnDeathSequenceEnded), 2f);
+        Invoke(nameof(OnDeathSequenceEnded), 1f);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
