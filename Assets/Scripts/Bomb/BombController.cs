@@ -21,6 +21,10 @@ public class BombController : MonoBehaviour
     public Tilemap destructibleTiles; //khoi tao mot doi tuong tren ban do de co the pha huy no khi no bi no
     public Destructible destructiblePrefab;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource boom;
+    [SerializeField] private AudioSource itemBomb;
+    [SerializeField] private AudioSource itemExplosion;
     private void OnEnable()
     {
         bombsRemaining = bombAmount;
@@ -85,8 +89,10 @@ public class BombController : MonoBehaviour
 
         Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         explosion.SetActiveRenderer(explosion.start);
+        boom.Play();
         explosion.DestroyAfter(explosionDuration);
 
+        
         Explode(position, Vector2.up, explosionRadius);
         Explode(position, Vector2.down, explosionRadius);
         Explode(position, Vector2.left, explosionRadius);
@@ -151,7 +157,14 @@ public class BombController : MonoBehaviour
 
     public void AddBomb()
     {
+        itemBomb.Play();
         bombAmount++;
         bombsRemaining++;
+    }
+
+    public void AddExplosionRadius()
+    {
+        itemExplosion.Play();
+        explosionRadius++;
     }
 }

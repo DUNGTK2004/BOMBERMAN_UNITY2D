@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -19,10 +20,10 @@ public class ItemPickup : MonoBehaviour
                 player.GetComponent<BombController>().AddBomb();
                 break;
             case ItemType.BlastRadius:
-                player.GetComponent<BombController>().explosionRadius++;
+                player.GetComponent<BombController>().AddExplosionRadius();
                 break;
             case ItemType.SpeedIncrease:
-                player.GetComponent<MovementController>().speed++;
+                player.GetComponent<MovementController>().AddSpeed();
                 break;
         }
 

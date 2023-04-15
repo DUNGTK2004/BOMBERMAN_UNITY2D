@@ -6,11 +6,13 @@ public class MovementController : MonoBehaviour
     private Vector2 direction = Vector2.down; //Vector2 : bieu dien cac vector va diem 2D , down -> vector2(0, -1)
     public float speed = 5f;
     
+    [Header("Keycode")] 
     public KeyCode inputUp = KeyCode.W;
     public KeyCode inputDown = KeyCode.S;
     public KeyCode inputLeft = KeyCode.A;
     public KeyCode inputRight = KeyCode.D;
 
+    [Header("Move")]
     public AnimatedSpriteRenderer spriteRendererUp;
     public AnimatedSpriteRenderer spriteRendererDown;
     public AnimatedSpriteRenderer spriteRendererLeft;
@@ -18,6 +20,8 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererDeath;
     private AnimatedSpriteRenderer activeSpriteRenderer;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource itemSpeed;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>(); //lay tham chieu den thanh phan rigidbody (thanh phan de them tinh chat vat ly vao tro choi)
@@ -92,5 +96,11 @@ public class MovementController : MonoBehaviour
     {
         gameObject.SetActive(false);
         FindObjectOfType<GameManager>().CheckWinState(); //Tim kiem doi tuong cua GameManager , va check xem no con hoat dong hay khong
+    }
+
+    public void AddSpeed()
+    {
+        itemSpeed.Play();
+        speed++;
     }
 }
