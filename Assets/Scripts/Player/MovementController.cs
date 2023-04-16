@@ -22,6 +22,7 @@ public class MovementController : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource itemSpeed;
+    [SerializeField] private AudioSource death;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>(); //lay tham chieu den thanh phan rigidbody (thanh phan de them tinh chat vat ly vao tro choi)
@@ -67,6 +68,7 @@ public class MovementController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) //neu va cham voi lop explosion
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Explosion") || other.gameObject.layer == LayerMask.NameToLayer("Enemy")){
+            death.Play();
             DeathSequence();
         }
     }
