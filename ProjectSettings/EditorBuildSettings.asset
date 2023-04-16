@@ -23,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheEnd.unity
     guid: c77524f8fb69fd14d874487f707356e8
+  - enabled: 1
+    path: Assets/Scenes/Story.unity
+    guid: be0839009818c6d42a31caa8a1d0f302
+  - enabled: 1
+    path: Assets/Scenes/BeforeLevel1.unity
+    guid: dae6667cf2c89524fbe06faef481ac0c
+  - enabled: 1
+    path: Assets/Scenes/BeforeLevel2.unity
+    guid: f1fe078d372573e49a7971d1bc7b783f
+  - enabled: 1
+    path: Assets/Scenes/BeforeLevel3.unity
+    guid: 303fa0e254ba72f499399ff3fd6ed0a6
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: ab9a43d1bd73a664c8bba97c954ffe9d
   m_configObjects: {}

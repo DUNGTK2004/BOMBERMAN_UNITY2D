@@ -115,7 +115,7 @@ public class enemyMovementController : MonoBehaviour
         enemyRB.AddForce(direction * enemySpeed);
         // if(enemyRB.velocity.x == 0){
         //             enemyAnim.SetBool("Run", true);
-             enemyAnim.SetBool("Run1", true);
+             enemyAnim.SetBool("Run", true);
 
     }
 }
