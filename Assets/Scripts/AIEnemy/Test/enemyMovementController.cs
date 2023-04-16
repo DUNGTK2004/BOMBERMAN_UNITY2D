@@ -62,15 +62,15 @@ public class enemyMovementController : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if(other.tag == "Player"){ //khi gap player thi se co 1 luc keo nhan vat di chuyen
-            if(!faceingRight){
-                enemyRB.AddForce(new Vector2(-1, 0) * enemySpeed);
-            }else enemyRB.AddForce(new Vector2(1, 0) * enemySpeed);
-            enemyAnim.SetBool("Run", true);
-        }
-    }
+    // void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if(other.tag == "Player"){ //khi gap player thi se co 1 luc keo nhan vat di chuyen
+    //         if(!faceingRight){
+    //             enemyRB.AddForce(new Vector2(-1, 0) * enemySpeed);
+    //         }else enemyRB.AddForce(new Vector2(1, 0) * enemySpeed);
+    //         enemyAnim.SetBool("Run", true);
+    //     }
+    // }
 
     void  OnTriggerExit2D(Collider2D other)
     {
@@ -78,6 +78,63 @@ public class enemyMovementController : MonoBehaviour
             canFlip = true; //khi nguoi choi ko con va cham thi tiep tuc chuc nang lat sau 5s
             enemyRB.velocity = new Vector2(0, 0); //dat toc do cua rigidbody cua doi tuong enemy thanh(0, 0) nghia la no se khong di chuyen nua
             enemyAnim.SetBool("Run", false); //cho animation tro ve nhu ban dau
+            enemyAnim.SetBool("Run1", false);
         }
     }
+
+//
+    // public float vectorX;
+    // public float vectorY;
+    // public float sizeVector;
+    // public float directionMoveX;
+    // public float directionMoveY;
+
+    // void OnTriggerStay2D(Collider2D other)
+    // {
+    //      vectorX = other.transform.position.x - transform.position.x;
+    //         vectorY = other.transform.position.y - transform.position.y;
+    //         sizeVector = Mathf.Sqrt(vectorX * vectorX + vectorY * vectorY);
+    //         directionMoveX = vectorX / sizeVector;
+    //     if (other.tag == "Player"){ //khi gap player thi se co 1 luc keo nhan vat di chuyen
+    //         // if(!faceingRight){
+    //         //     enemyRB.AddForce(new Vector2(-1, 0) * enemySpeed);
+    //         // }else enemyRB.AddForce(new Vector2(1, 0) * enemySpeed);
+           
+    //         directionMoveY = vectorY / sizeVector;
+    //         enemyRB.AddForce(new Vector2(directionMoveX, directionMoveY) * enemySpeed);
+    //         enemyAnim.SetBool("Run", true);
+    //     }
+    // }
+
+    void OnTriggerStay2D(Collider2D other)
+{
+    if (other.tag == "Player")
+    {
+       
+        Vector2 direction = (other.transform.position - transform.Find("Enemy1").position).normalized;
+        enemyRB.AddForce(direction * enemySpeed);
+        // if(enemyRB.velocity.x == 0){
+        //             enemyAnim.SetBool("Run", true);
+             enemyAnim.SetBool("Run1", true);
+
+    }
+}
+
+//Mot thuat toan khac 
+
+//     void MoveTowardsTarget(Vector3 target)
+// {
+//     transform.Find("Enemy1").position = Vector3.MoveTowards(transform.Find("Enemy1").position, target, enemySpeed * Time.deltaTime);
+// }
+
+// void OnTriggerStay2D(Collider2D other)
+// {
+//     if (other.tag == "Player")
+//     {
+//         MoveTowardsTarget(other.transform.position);
+//         enemyAnim.SetBool("Run", true);
+//     }
+// }
+
+
 }

@@ -33,23 +33,30 @@ public class Enemy2 : MonoBehaviour
         animator.SetFloat("Hp", hp);
     }
 
+    private int count = 0;
+
     // Update is called once per frame
     void Update()
     {
-        xx1 = vector.x * 100;
+        xx1 = transform.position.x;
         vector = transform.position;
         changePosition = xx1 - xx;
 
-     
-        animator.SetFloat("Speed", changePosition);
-        // if(changePosition != 0)
-        // {
-        //     if(changePosition < 0)
-        //     {
-        //         transform.localScale = new Vector3(1, 1, 0);
-        //     }else transform.localScale = new Vector3(-1, 1, 0);
-        // }
-        xx = xx1;
+        
+        animator.SetFloat("Speed", Mathf.Abs(changePosition));
+        if(changePosition != 0)
+        {
+            if(changePosition < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 0);
+            }else transform.localScale = new Vector3(-1, 1, 0);
+        }
+        count++;
+        if(count == 120){
+             xx = xx1;
+             count = 0;
+        }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other)
